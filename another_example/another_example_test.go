@@ -2,7 +2,7 @@ package another_example_test
 
 import (
 	"regexp"
-	"github.com/orivil/validate"
+	"gopkg.in/orivil/validate.v0"
 	"net/url"
 	"fmt"
 )
