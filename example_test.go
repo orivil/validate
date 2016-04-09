@@ -1,7 +1,7 @@
 package validate_test
 
 import (
-	"github.com/orivil/validate"
+	"gopkg.in/orivil/validate.v0"
 	"net/url"
 	"log"
 	"fmt"
