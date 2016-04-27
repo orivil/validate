@@ -35,7 +35,7 @@ func ExampleValidate() {
 		},
 	}
 
-	// Setp 2. check if has any errors, this step should be did in "init()" function
+	// Setp 2. check if has any errors, this step should be done in "init()" function
 	validator.MustCheck()
 
 	// Setp 3. valid
