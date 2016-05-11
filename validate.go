@@ -1,3 +1,8 @@
+// Copyright 2016 orivil Authors. All rights reserved.
+// Use of this source code is governed by a MIT-style
+// license that can be found in the LICENSE file.
+
+// Package validate for validate data which type is 'url.Values'.
 package validate
 
 import (
@@ -40,7 +45,7 @@ func (this *Validate) AddValidator(v *Validate) {
 }
 
 // Valid for validate the values, if return "", means valid success
-// else return the error messages
+// else return the error message
 func (v *Validate) Valid(vs url.Values) (msg string) {
 
 	for _, validator := range v.validators {
