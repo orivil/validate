@@ -1,7 +1,7 @@
-package validate_test
+package validator_test
 
 import (
-	"gopkg.in/orivil/validate.v0"
+	"gopkg.in/orivil/validator.v0"
 	"net/url"
 	"log"
 	"fmt"
@@ -27,7 +27,7 @@ func ExampleValidate() {
 
 
 	// Setp 1. new validator
-	var validator = validate.Validate{
+	var validator = &validator.Validator{
 		Required: map[string]string{
 			username: "please input user name!",
 			email: "please input email!",

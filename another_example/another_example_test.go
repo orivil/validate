@@ -2,7 +2,7 @@ package another_example_test
 
 import (
 	"regexp"
-	"gopkg.in/orivil/validate.v0"
+	"gopkg.in/orivil/validator.v0"
 	"net/url"
 	"fmt"
 )
@@ -19,7 +19,7 @@ const (
 var passwordPatten = regexp.MustCompile(`^[\w]+$`)
 
 // new user login validator
-var loginValidator = validate.Validate{
+var loginValidator = &validator.Validator{
 
 	Required: map[string]string{
 		email: "please input email!",
@@ -44,7 +44,7 @@ var loginValidator = validate.Validate{
 }
 
 // new user register validator
-var registerValidator = validate.Validate{
+var registerValidator = &validator.Validator{
 
 	Required: map[string]string{
 		username: "please input user name!",

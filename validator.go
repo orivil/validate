@@ -2,8 +2,8 @@
 // Use of this source code is governed by a MIT-style
 // license that can be found in the LICENSE file.
 
-// Package validate for validate data which type is 'url.Values'.
-package validate
+// Package validator provides a validator for validating "url.Values".
+package validator
 
 import (
 	"net/url"
@@ -15,7 +15,7 @@ import (
 
 var emailPattern = regexp.MustCompile("[\\w!#$%&'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[a-zA-Z0-9](?:[\\w-]*[\\w])?")
 
-type Validate struct {
+type Validator struct {
 	Required    map[string]string                    // {inputName: msg}
 	Email       map[string]string                    // {inputName: msg}
 	Confirm     map[string]map[string]string         // {inputName1: {inputName2: msg}}
@@ -25,11 +25,11 @@ type Validate struct {
 	Min         map[string]map[string]string         // {inputName: {minNum: msg}}
 	Max         map[string]map[string]string         // {inputName: {maxNum: msg}}
 	Regexp      map[string]map[string]*regexp.Regexp // {inputName: {msg: *Regexp}}
-	validators  []*Validate
+	validators  []*Validator
 }
 
-// MustCheck for check if there any errors
-func (v *Validate) MustCheck() {
+// MustCheck for check if there any error
+func (v *Validator) MustCheck() {
 
 	mustGetRange(v.SliceRange)
 	mustGetRange(v.StringRange)
@@ -40,13 +40,13 @@ func (v *Validate) MustCheck() {
 }
 
 // AddValidator for add another validator to this validator
-func (this *Validate) AddValidator(v *Validate) {
+func (this *Validator) AddValidator(v *Validator) {
 	this.validators = append(this.validators, v)
 }
 
 // Valid for validate the values, if return "", means valid success
 // else return the error message
-func (v *Validate) Valid(vs url.Values) (msg string) {
+func (v *Validator) Valid(vs url.Values) (msg string) {
 
 	for _, validator := range v.validators {
 		if msg := validator.Valid(vs); msg != "" {
